@@ -1,0 +1,66 @@
+---
+  
+Title: "Effects on Academic Performance"
+Author: Vanya Trenado and Juana Jimenez
+Date: April 8, 2023
+output: github_document
+
+---
+## Introduction
+
+When it comes to academic performance, one may think that everyone has the same opportunities to do a satisfactory job. However, this is not always the case. Most scholars get affected academically by factors such as their race, gender,income, schedules,culture and expectations from parents. using information obtained through three datasets we will be able to visualize the correlation between variables and the success of students. 
+
+## Packages Required
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, cache = TRUE)
+```
+
+
+```{r}
+library(tidyverse) #used to tidy multiple data packages
+library(ggplot2) #used for plotting
+library(dplyr) #used for data manipulation
+library(knitr) #used to dynamic report generation
+
+
+student <- read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\student_data01.csv')
+glimpse(student)
+
+performance <- read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\student_performance.csv')
+glimpse(performance)
+
+satvsgpa <-read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\sat_to_gpa.csv')
+glimpse(satvsgpa)
+```
+
+## What gender and race got the higher grades percentage?
+
+```{r}
+
+```
+
+## How did abcenses affect performance?
+
+```{r}
+
+```
+
+## Effects of having a standard lunch vs free lunch
+```{r}
+
+```
+
+## Did parents' education influence grades?
+```{r}
+
+```
+
+## What student got the higher grade?
+```{r}
+
+```
+
+##
+## Conclusion
+
+To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. Their parents might not have pursued a higher education so there is not much emphasis on the importance of doing well academically. 
