@@ -35,7 +35,12 @@ glimpse(satvsgpa)
 
 ## What gender and race got the higher grades percentage?
 
+The female had high range of scores but they were more dense between 200 to 300. For male, the score range from 110 to 250.
+
 ```{r}
+performance %>% ggplot(aes(x = gender, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+
+performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_point(alpha = .5, color = 'pink')
 
 ```
 
