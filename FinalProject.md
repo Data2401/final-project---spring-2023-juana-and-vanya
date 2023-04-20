@@ -1,9 +1,3 @@
-------------------------------------------------------------------------
-
-Title: “Effects on Academic Performance” Author: Vanya Trenado and Juana
-Jimenez Date: April 8, 2023 output: github_document
-
-------------------------------------------------------------------------
 
 ## Introduction
 
@@ -24,7 +18,7 @@ library(dplyr) #used for data manipulation
 library(knitr) #used to dynamic report generation
 
 
-student <- read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\student_data01.csv')
+student <- read.csv('student_data01.csv')
 glimpse(student)
 ```
 
@@ -65,12 +59,12 @@ glimpse(student)
     ## $ G3         <int> 6, 6, 10, 15, 10, 15, 11, 6, 19, 15, 9, 12, 14, 11, 16, 14,…
 
 ``` r
-performance <- read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\student_performance.csv')
+performance <- read.csv('student_performance.csv')
 glimpse(performance)
 ```
 
     ## Rows: 1,000
-    ## Columns: 8
+    ## Columns: 9
     ## $ gender                      <chr> "female", "female", "female", "male", "mal…
     ## $ race.ethnicity              <chr> "group B", "group C", "group B", "group A"…
     ## $ parental.level.of.education <chr> "bachelor's degree", "some college", "mast…
@@ -79,9 +73,10 @@ glimpse(performance)
     ## $ math.score                  <int> 72, 69, 90, 47, 76, 71, 88, 40, 64, 38, 58…
     ## $ reading.score               <int> 72, 90, 95, 57, 78, 83, 95, 43, 64, 60, 54…
     ## $ writing.score               <int> 74, 88, 93, 44, 75, 78, 92, 39, 67, 50, 52…
+    ## $ total.score                 <int> 218, 247, 278, 148, 229, 232, 275, 122, 19…
 
 ``` r
-satvsgpa <-read.csv('C:\\Users\\vanya\\OneDrive\\Desktop\\Final_Project\\sat_to_gpa.csv')
+satvsgpa <-read.csv('sat_to_gpa.csv')
 glimpse(satvsgpa)
 ```
 
@@ -90,7 +85,22 @@ glimpse(satvsgpa)
     ## $ SAT.Score <int> 1600, 1593, 1587, 1580, 1573, 1567, 1560, 1553, 1547, 1540, …
     ## $ GPA       <dbl> 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, 4.00, …
 
-## What gender and race got the higher grades percentage?
+## What gender and race got the higher grades?
+
+The female had high range of scores but they were more dense between 200
+to 300. For male, the score range from 110 to 250.
+
+``` r
+performance %>% ggplot(aes(x = gender, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+```
+
+![](FinalProject_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
+performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+```
+
+![](FinalProject_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
 
 ## How did abcenses affect performance?
 
