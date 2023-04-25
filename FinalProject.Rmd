@@ -37,21 +37,28 @@ glimpse(satvsgpa)
 The female had high range of scores but they were more dense between 200 to 300. For male, the score range from 110 to 250.
 
 ```{r}
-performance %>% ggplot(aes(x = gender, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+performance %>% ggplot(aes(x = gender, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
 
-performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
 
 ```
 
 ## How did abcenses affect performance?
 
 ```{r}
-
+student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
+abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
+plot(abs_eff)
 ```
 
 ## Effects of having a standard lunch vs free lunch
 ```{r}
+paid_lunch=student%>%ggplot(aes(x=average_grade,y=paid))+geom_point(color="blue")
+plot(paid_lunch)
 
+abs_eff_lunch=student%>%ggplot(aes(x=absences,y=average_grade))+
+geom_point(mapping =aes(color=paid))+ geom_smooth()
+plot(abs_eff_lunch)
 ```
 
 ## Did parents' education influence grades?
@@ -64,7 +71,6 @@ performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_point(al
 
 ```
 
-##
 ## Conclusion
 
 To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. Their parents might not have pursued a higher education so there is not much emphasis on the importance of doing well academically. 
