@@ -1,7 +1,7 @@
 ---
-Title: "Effects on Academic Performance"
-Author: Vanya Trenado and Juana Jimenez
-Date: April 8, 2023
+title: "Effects on Academic Performance"
+author: "Vanya Trenado and Juana Jimenez"
+date: "April 8, 2023"
 output: html_document
 ---
 
