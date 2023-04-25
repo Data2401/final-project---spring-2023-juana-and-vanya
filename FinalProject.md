@@ -1,4 +1,11 @@
 
+``` r
+##knitr::include_graphics("C:\Users\vanya\OneDrive\Desktop\Final_Project\final.jpg")
+```
+
+![image of
+something](https://s2.research.com/wp-content/uploads/2020/12/24112827/American-Students-Classroom-1-760x380.png)
+
 ## Introduction
 
 When it comes to academic performance, one may think that everyone has
@@ -91,26 +98,47 @@ The female had high range of scores but they were more dense between 200
 to 300. For male, the score range from 110 to 250.
 
 ``` r
-performance %>% ggplot(aes(x = gender, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+performance %>% ggplot(aes(x = gender, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
 ```
 
-![](FinalProject_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](FinalProject_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
-performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_point(alpha = .5, color = 'pink')
+performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
 ```
 
-![](FinalProject_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+![](FinalProject_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
 
 ## How did abcenses affect performance?
 
+``` r
+student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
+abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
+plot(abs_eff)
+```
+
+![](FinalProject_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
 ## Effects of having a standard lunch vs free lunch
+
+``` r
+paid_lunch=student%>%ggplot(aes(x=average_grade,y=paid))+geom_point(color="blue")
+plot(paid_lunch)
+```
+
+![](FinalProject_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+abs_eff_lunch=student%>%ggplot(aes(x=absences,y=average_grade))+
+geom_point(mapping =aes(color=paid))+ geom_smooth()
+plot(abs_eff_lunch)
+```
+
+![](FinalProject_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
 
 ## Did parents’ education influence grades?
 
 ## What student got the higher grade?
-
-## 
 
 ## Conclusion
 

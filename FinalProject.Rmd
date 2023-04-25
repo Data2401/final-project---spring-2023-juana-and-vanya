@@ -2,8 +2,12 @@
 Title: "Effects on Academic Performance"
 Author: Vanya Trenado and Juana Jimenez
 Date: April 8, 2023
-output: github_document
+output: html_document
 ---
+
+
+![image of stduents in class](https://s2.research.com/wp-content/uploads/2020/12/24112827/American-Students-Classroom-1-760x380.png)
+
 
 ## Introduction
 
