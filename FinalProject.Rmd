@@ -1,7 +1,7 @@
 ---
 title: "Effects on Academic Performance"
 author: "Vanya Trenado and Juana Jimenez"
-date: "April 8, 2023"
+date: "April 26, 2023"
 output: html_document
 ---
 
@@ -35,17 +35,30 @@ glimpse(performance)
 satvsgpa <-read.csv('sat_to_gpa.csv')
 glimpse(satvsgpa)
 ```
+## What is the ratio of male to female students?
+```{r}
+performance%>% count(gender)
+## gender n
+## 1 female 518
+## 2 male 482
+slices = c(518,482)
+lbls = c("female 51.8% ","male 48.2% ")
+pie(slices,labels = lbls, main="Gender ratio")+
+scale_fill_brewer(palette="Set1")
+```
 
-## What gender and race got the higher grades?
+
+## What gender got the higher grades?
 
 The female had high range of scores but they were more dense between 200 to 300. For male, the score range from 110 to 250.
 
 ```{r}
-performance %>% ggplot(aes(x = gender, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
 
-performance %>% ggplot(aes(x = race.ethnicity, y = total.score)) + geom_boxplot(alpha = .5, color = "pink")
+performance=mutate(performance%>%rowwise(),p_average_grade=rowMeans(cbind(math.score,reading.score,writing.score)))
+performance %>% ggplot(aes(x = gender, y = p_average_grade,color=gender)) + geom_boxplot(alpha = .5,)
 
 ```
+
 
 ## How did abcenses affect performance?
 
@@ -55,26 +68,37 @@ abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
 plot(abs_eff)
 ```
 
-## Effects of having a standard lunch vs free lunch
+
+## Did having a standard lunch vs free lunch affect performace?
+
 ```{r}
-paid_lunch=student%>%ggplot(aes(x=average_grade,y=paid))+geom_point(color="blue")
+paid_lunch=student%>%ggplot(aes(x=average_grade,y=paid))+geom_boxplot(color="blue")
 plot(paid_lunch)
 
+```
+
+## What was the relationship between types of lunch and abscences?
+
+```{r}
 abs_eff_lunch=student%>%ggplot(aes(x=absences,y=average_grade))+
 geom_point(mapping =aes(color=paid))+ geom_smooth()
 plot(abs_eff_lunch)
 ```
 
 ## Did parents' education influence grades?
-```{r}
 
+```{r}
+performance %>% ggplot(aes(x = p_average_grade, colour = parental.level.of.education, fill=parental.level.of.education)) + geom_density(alpha = .05)
 ```
 
-## What student got the higher grade?
-```{r}
+## How did performance get affected by parents being separated or together?
 
+```{r}
+student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
+student %>% ggplot(aes(x = average_grade, color = Pstatus, fill=Pstatus)) + geom_density(alpha = .05)
+student %>% ggplot(aes(x = average_grade, y = Pstatus, color=Pstatus)) + geom_boxplot()
 ```
 
 ## Conclusion
 
-To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. Their parents might not have pursued a higher education so there is not much emphasis on the importance of doing well academically. 
+To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. This environment involves the relationship that their parents have with each other, education of parents, access to transportation to school, lunch, and so on.
