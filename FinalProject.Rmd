@@ -35,7 +35,9 @@ glimpse(performance)
 satvsgpa <-read.csv('sat_to_gpa.csv')
 glimpse(satvsgpa)
 ```
+
 ## What is the ratio of male to female students?
+
 ```{r}
 performance%>% count(gender)
 ## gender n
@@ -59,6 +61,12 @@ performance %>% ggplot(aes(x = gender, y = p_average_grade,color=gender)) + geom
 
 ```
 
+## What is the relationship between SAT and GPA scores?
+
+```{r}
+satvsgpa %>% ggplot(aes(x = SAT.Score, y = GPA,)) + geom_point(color='red')+ ylim(1,4)+xlim(600,1600)
+```
+
 
 ## How did abcenses affect performance?
 
@@ -66,6 +74,13 @@ performance %>% ggplot(aes(x = gender, y = p_average_grade,color=gender)) + geom
 student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
 abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
 plot(abs_eff)
+```
+```{r}
+student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
+abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
+
+plot(abs_eff)+ylim(15,20)
+
 ```
 
 
@@ -90,6 +105,12 @@ plot(abs_eff_lunch)
 ```{r}
 performance %>% ggplot(aes(x = p_average_grade, colour = parental.level.of.education, fill=parental.level.of.education)) + geom_density(alpha = .05)
 ```
+
+Let's take a closer look
+```{r}
+performance %>% ggplot(aes(x = p_average_grade, colour = parental.level.of.education, fill=parental.level.of.education)) + geom_density(alpha = .05)+xlim(80,100)
+```
+
 
 ## How did performance get affected by parents being separated or together?
 
