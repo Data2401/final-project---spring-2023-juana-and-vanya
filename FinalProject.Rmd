@@ -73,11 +73,6 @@ satvsgpa %>% ggplot(aes(x = SAT.Score, y = GPA,)) + geom_point(color='red')+ yli
 ```{r}
 student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
 abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
-plot(abs_eff)
-```
-```{r}
-student=mutate(student%>%rowwise(),average_grade=rowMeans(cbind(G1,G2,G3)))
-abs_eff=student%>%ggplot(aes(x=absences,y=average_grade))+geom_point()
 
 plot(abs_eff)+ylim(15,20)
 
