@@ -6,7 +6,7 @@ output: html_document
 ---
 
 
-![image of stduents in class](https://s2.research.com/wp-content/uploads/2020/12/24112827/American-Students-Classroom-1-760x380.png)
+![image of students in class](https://s2.research.com/wp-content/uploads/2020/12/24112827/American-Students-Classroom-1-760x380.png)
 
 
 ## Introduction
