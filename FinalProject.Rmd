@@ -13,6 +13,8 @@ output: html_document
 
 When it comes to academic performance, one may think that everyone has the same opportunities to do a satisfactory job. However, this is not always the case. Most scholars get affected academically by factors such as their race, gender,income, schedules,culture and expectations from parents. using information obtained through three datasets we will be able to visualize the correlation between variables and the success of students. 
 
+In order to be able to better analyze this topic, we use information from 3 different schools instead of only focusing on one school.
+
 ## Packages Required
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, cache = TRUE)
@@ -36,18 +38,21 @@ satvsgpa <-read.csv('sat_to_gpa.csv')
 glimpse(satvsgpa)
 ```
 
-## What is the ratio of male to female students?
+## Links to Datasets Used
+1) https://www.kaggle.com/code/bhartiprasad17/student-academic-performance-analysis
+2) https://www.kaggle.com/datasets/devansodariya/student-performance-data
+3) https://www.kaggle.com/datasets/farhansadeek/sat-to-gpa?select=SAT+to+GPA.csv
 
-```{r}
-performance%>% count(gender)
-## gender n
-## 1 female 518
-## 2 male 482
-slices = c(518,482)
-lbls = c("female 51.8% ","male 48.2% ")
-pie(slices,labels = lbls, main="Gender ratio")+
-scale_fill_brewer(palette="Set1")
-```
+
+## Questions Examined
+1) What gender got the higher grade?
+2) What is the relationship between SAT and GPA scores?
+3) How did absences affect performance?
+4) Did having a standard lunch vs free lunch affect performace?
+5) What was the relationship between types of lunch and abscences?
+6) Did parents' education influence grades?
+7)How did performance get affected by parents being separated or together?
+
 
 
 ## What gender got the higher grades?
