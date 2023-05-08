@@ -51,7 +51,7 @@ glimpse(satvsgpa)
 4) Did having a standard lunch vs free lunch affect performace?
 5) What was the relationship between types of lunch and abscences?
 6) Did parents' education influence grades?
-7)How did performance get affected by parents being separated or together?
+7) How did performance get affected by parents being separated or together?
 
 
 
