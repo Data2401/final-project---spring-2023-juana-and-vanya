@@ -122,4 +122,4 @@ student %>% ggplot(aes(x = average_grade, y = Pstatus, color=Pstatus)) + geom_bo
 
 ## Conclusion
 
-To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. This environment involves the relationship that their parents have with each other, education of parents, access to transportation to school, lunch, and so on.
+To summarize everything mentioned above, we have found that academic performance is not only based on the student. The environment in which the scholar is in plays a huge role in how good or bad he or she tries in school. This environment involves the relationship that their parents have with each other, education of parents, lunch, and so on.
